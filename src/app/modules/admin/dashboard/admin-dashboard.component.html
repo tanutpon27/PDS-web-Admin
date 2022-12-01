@@ -1,0 +1,262 @@
+<div class="flex flex-col flex-auto min-w-0" *transloco="let t">
+
+
+
+
+    <!-- Main -->
+    <div class="flex-auto border-t -mt-px pt-4 sm:pt-6">
+        <div class="w-full max-w-screen-xl mx-auto">
+            
+            <!-- Tabs -->
+            <mat-tab-group class="sm:px-2" [animationDuration]="'0'">
+                
+                <!-- Home -->
+                <mat-tab label="{{t('dashboard.home')}}">
+                    <ng-template matTabContent>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 w-full min-w-0">
+
+                            <!-- Clients -->
+                            <div class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
+
+                                <div class="flex items-start justify-between">
+
+                                    <div class="ml-2 -mt-2 -mr-3">
+                                        <div class="flex items-center">
+                                            <mat-icon class="icon-size-5 text-hint"
+                                                [svgIcon]="'heroicons_outline:user-group'"></mat-icon>
+                                            <div class="ml-1.5 text-md text-secondary">
+                                                {{t('dashboard.admin-user')}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center mt-2">
+                                    <div
+                                        class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-blue-500">
+                                        {{DataUser?.user_admin ??0 }}</div>
+                                    <div class="text-lg font-medium text-blue-600 dark:text-blue-500">{{t('dashboard.users')}}</div>
+
+                                </div>
+                            </div>
+                            <!-- Completed tasks -->
+                            <div class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
+
+                                <div class="flex items-start justify-between">
+
+                                    <div class="ml-2 -mt-2 -mr-3">
+                                        <div class="flex items-center">
+                                            <mat-icon class="icon-size-5 text-hint"
+                                                [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
+                                            <div class="ml-1.5 text-md text-secondary ">
+                                                {{t('dashboard.client-user')}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center mt-2">
+                                    <div
+                                        class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-green-500">
+                                        {{DataUser?.user_count ??0 }}</div>
+                                    <div class="text-lg font-medium text-green-600 dark:text-green-500">{{t('dashboard.users')}}</div>
+
+                                </div>
+
+                            </div>
+    
+                            <!-- Notifications -->
+                            <div class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
+                                <div class="flex items-start justify-between">
+
+                                    <div class="ml-2 -mt-2 -mr-3">
+                                        <div class="flex items-center">
+                                            <mat-icon class="icon-size-5 text-hint"
+                                                [svgIcon]="'heroicons_outline:bell'"></mat-icon>
+                                            <div class="ml-1.5 text-md text-secondary ">
+                                                {{t('dashboard.active-user')}} </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center mt-2">
+                                    <div
+                                        class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-amber-500">
+                                        {{DataUser?.user_active ??0 }}</div>
+                                    <div class="text-lg font-medium text-amber-600 dark:text-amber-500">{{t('dashboard.users')}}</div>
+
+                                </div>
+                            </div>
+                            <!-- Reports -->
+                            <div class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
+                                <div class="flex items-start justify-between">
+
+                                    <div class="ml-2 -mt-2 -mr-3">
+                                        <div class="flex items-center">
+                                            <mat-icon class="icon-size-5 text-hint"
+                                                [svgIcon]="'heroicons_outline:exclamation'"></mat-icon>
+                                            <div class="ml-1.5 text-md text-secondary ">
+                                                {{t('dashboard.notactive-user')}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center mt-2">
+                                    <div
+                                        class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-red-500">
+                                        {{DataUser?.user_non_active ??0 }}</div>
+                                    <div class="text-lg font-medium text-red-600 dark:text-red-500">{{t('dashboard.users')}}</div>
+
+                                </div>
+                            </div>
+                            <!--  Parcels by company-->
+                            <div class="sm:col-span-2 md:col-span-4 flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
+                                <div class="flex flex-col sm:flex-row items-start justify-between">
+                                    <div class="text-lg font-medium tracking-tight leading-6 truncate">
+                                        {{t('dashboard.parcels-by-company')}} </div>
+                                  
+                                </div>
+                                <div class="grid grid-cols-1 lg:grid-cols-2 grid-flow-row gap-6 w-full mt-8 sm:mt-4">
+                                    <!-- Parcel type -->
+                                    <div class="flex flex-col flex-auto">
+                                        <div class="font-medium text-secondary">{{t('dashboard.parcel-type')}} </div>
+                                        <div class="flex flex-col flex-auto">
+                                            <apx-chart class="flex-auto w-full h-80" [series]="chartOptions.series"
+                                                [chart]="chartOptions.chart" [colors]="chartOptions.colors"
+                                                [dataLabels]="chartOptions.dataLabels"
+                                                [plotOptions]="chartOptions.plotOptions" [xaxis]="chartOptions.xaxis"
+                                                [stroke]="chartOptions.stroke">
+
+                                            </apx-chart>
+
+
+
+                                        </div>
+                                    </div>
+                                    <!-- All parcels -->
+                                    <div class="flex flex-col">
+                                        <div class="font-medium text-secondary"> {{t('dashboard.all-parcels')}}</div>
+                                        <div class="flex-auto grid grid-cols-4 gap-4 mt-6">
+                                            <!-- Parcels -->
+                                            <div style="color: white ;background-color:#f43f5e;"
+                                                class="col-span-4 flex flex-col items-center justify-center py-8 px-1 rounded-2xl ">
+                                                <div
+                                                    class="text-5xl sm:text-7xl font-semibold leading-none tracking-tight"  >
+                                                    {{DataParcel?.total_parcel ??0 }}
+                                                </div>
+                                                <div class="mt-1 text-sm sm:text-lg font-medium">
+                                                    <div class="flex items-center">
+                                                        <mat-icon class="icon-size-5 " style="color: white;"
+                                                            [svgIcon]="'heroicons_outline:cube'"></mat-icon>
+                                                        <div>
+                                                            {{t('dashboard.all-parcels')}}</div>
+                                                    </div>
+                                                </div>
+                                              
+                                            </div>
+                                            <!-- Parcels -->
+                                            <div style="color: white ;background-color: #008ffb;"
+                                                class="col-span-1 flex flex-col items-center justify-center py-8 px-1 rounded-2xl ">
+                                                <div
+                                                    class="text-5xl sm:text-7xl font-semibold leading-none tracking-tight"  >
+                                                    {{DataParcel?.sum_parcel ??0 }}
+                                                </div>
+                                                <div class="mt-1 text-sm sm:text-lg font-medium">
+                                                    <div class="flex items-center">
+                                                        <mat-icon class="icon-size-5 " style="color: white;"
+                                                            [svgIcon]="'heroicons_outline:cube'"></mat-icon>
+                                                        <div>
+                                                            {{t('dashboard.parcels')}}</div>
+                                                    </div>
+                                                </div>
+                                              
+                                            </div>
+                                            <!-- Parcels Document -->
+                                            <div style="color: white;background-color: #00e396;"
+                                                class="col-span-2 flex flex-col items-center justify-center py-8 px-1 rounded-2xl  ">
+                                                <div
+                                                    class="text-5xl sm:text-7xl font-semibold leading-none tracking-tight">
+                                                    {{DataParcel?.sum_parcel_doc ??0 }}
+                                                </div>
+                                                <div class="mt-1 text-sm sm:text-lg font-medium">
+                                                    <div class="flex items-center">
+                                                        <mat-icon class="icon-size-5 " style="color: white;"
+                                                            [svgIcon]="'heroicons_outline:document-text'"></mat-icon>
+                                                        <div>
+                                                            {{t('dashboard.parcelsdocument')}} </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Document -->
+                                            <div style="color: white;background-color: #feb019;"
+                                                class="col-span-1 flex flex-col items-center justify-center py-8 px-1 rounded-2xl  ">
+                                                <div
+                                                    class="text-5xl sm:text-7xl font-semibold leading-none tracking-tight">
+                                                    {{DataParcel?.sum_document ??0 }}
+                                                </div>
+                                                <div class="mt-1 text-sm sm:text-lg font-medium">
+                                                    <div class="flex items-center">
+                                                        <mat-icon class="icon-size-5 " style="color: white;"
+                                                            [svgIcon]="'heroicons_outline:document-text'"></mat-icon>
+                                                        <div>
+                                                            {{t('dashboard.document')}} </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Confirm Send-->
+                                            <div
+                                                class="text-green-600 dark:text-green-500 col-span-1 flex flex-col items-center justify-center py-8 px-1 rounded-2xl bg-gray-100 text-secondary dark:bg-white dark:bg-opacity-5">
+                                                <div class="text-5xl font-semibold leading-none tracking-tight">
+                                                    {{DataParcel?.parcel_confirm ??0 }}
+                                                </div>
+                                                <div class="mt-1 text-sm font-medium text-center"> {{t('dashboard.confirm-send')}}</div>
+                                            </div>
+                                            <!-- Wait Send  -->
+                                            <div
+                                                class="text-amber-600 dark:text-amber-500 col-span-2  flex flex-col items-center justify-center py-8 px-1 rounded-2xl bg-gray-100 text-secondary dark:bg-white dark:bg-opacity-5">
+                                                <div class="text-5xl font-semibold leading-none tracking-tight">
+                                                    {{DataParcel?.parcel_wait ??0 }}
+                                                </div>
+                                                <div class="mt-1 text-sm font-medium text-center"> {{t('dashboard.wait-send')}}</div>
+                                            </div>
+                                            <!-- Option Send-->
+                                            <div
+                                                class="text-blue-600 dark:text-green-500 col-span-1 flex flex-col items-center justify-center py-8 px-1 rounded-2xl bg-gray-100 text-secondary dark:bg-white dark:bg-opacity-5">
+                                                <div class="text-5xl font-semibold leading-none tracking-tight">
+                                                    {{DataParcel?.parcel_option ??0 }}
+                                                </div>
+                                                <div class="mt-1 text-sm font-medium text-center"> {{t('dashboard.option-send')}}</div>
+                                            </div>
+                                            <!-- Late Parcel  -->
+                                            <div
+                                                class="text-red-600 dark:text-red-500 col-span-2  flex flex-col items-center justify-center py-8 px-1 rounded-2xl bg-gray-100 text-secondary dark:bg-white dark:bg-opacity-5">
+                                                <div class=" text-5xl font-semibold leading-none tracking-tight">
+                                                    {{DataParcel?.parcel_late ??0 }}
+                                                </div>
+                                                <div class="mt-1 text-sm font-medium text-center"> {{t('dashboard.late-parcel')}} </div>
+                                            </div>
+                                            <!-- Return Send-->
+                                            <div
+                                                class="text-red-600 dark:text-green-500 col-span-2  flex flex-col items-center justify-center py-8 px-1 rounded-2xl bg-gray-100 text-secondary dark:bg-white dark:bg-opacity-5">
+                                                <div class="text-5xl font-semibold leading-none tracking-tight">
+                                                    {{DataParcel?.parcel_return ??0 }}
+                                                </div>
+                                                <div class="mt-1 text-sm font-medium text-center"> {{t('dashboard.return-send')}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+                       
+                    </ng-template>
+
+                </mat-tab>
+
+
+            </mat-tab-group>
+
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,53 @@
+{
+    
+
+    "dashboard":{
+      "home": "หน้าหลัก",
+        "title": "แผงควบคุม",
+        "clients": "ลูกค้า",
+        "users": "ผู้ใช้",
+        "completed-tasks": "งานที่เสร็จแล้ว",
+        "succeed": "สำเร็จ",
+        "notifications": "การแจ้งเตือน",
+        "times": "ครั้ง",
+        "request": "คำขอ",
+        "reports": "รายงาน",
+        "parcels-by-company": "พัสดุ",
+        "parcel-type": "พัสดุแยกตามสถานะ",
+        "all-parcels": " พัสดุทั้งหมด",
+        "parcels": "พัสดุ",
+        "document": "เอกสาร",
+        "parcelsdocument": "พัสดุและเอกสาร",
+        "late-parcel": "พัสดุล่าช้า",
+        "wait-send": "ลงทะเบียนแล้ว",
+        "confirm-send": "ยืนยันการจัดส่ง",
+        "return-send": "แจ้งส่งคืน",
+        "option-send": "รอผู้รับพัสดุ",
+        "admin-user": "แอดมิน",
+        "client-user": "ผู้ใช้ทั่วไป",
+        "active-user": "จำนวนผู้ที่ใช้งานอยู่",
+        "notactive-user": "จำนวนผู้ที่ไม่ได้ใช้งานแล้ว ",
+        "week-activity": "กิจกรรมประจำสัปดาห์"
+    },
+    "messages": {
+      "title": "ข้อความ"
+    },
+    "parcel": {
+      "title": "พัสดุ"
+    },
+    "users": {
+      "title": "ผู้ใช้"
+    },
+    "settings": {
+      "title": "ตั้งค่า",
+      "main_settings": {
+        "title": "การตั้งค่าหลัก"
+      },
+      "notifications": {
+        "title": "การแจ้งเตือน"
+      }
+      
+    }
+   
+    
+}

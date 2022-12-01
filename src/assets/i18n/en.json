@@ -1,0 +1,52 @@
+{
+  "dashboard": {
+    "home": "Home",
+    "title": "Dashboard",
+    "clients": "Clients",
+    "users": "Users",
+    "completed-tasks": "Completed tasks",
+    "succeed": "Succeed",
+    "notifications": "Notifications",
+    "times": "Times",
+    "request": "Request",
+    "reports": "Reports",
+    "parcels-by-company": "Parcels",
+    "parcel-type": "Parcel By Status",
+    "all-parcels": " All parcels",
+    "parcels": "Parcels",
+    "document": "Documents",
+    "parcelsdocument": "Parcels and Documents",
+    "late-parcel": "Late Parcel",
+    "wait-send": "Wait Send",
+    "confirm-send": "Confirm Send",
+    "return-send": "Return Send",
+    "option-send": "Option Send",
+    "admin-user": "Admins",
+    "client-user": "Clients",
+    "active-user": "Active User",
+    "notactive-user": "Not Active User",
+    "week-activity": "Week Activity"
+  },
+  "messages": {
+    "title": "Messages"
+  },
+  "parcel": {
+    "title": "Parcel"
+  },
+  "users": {
+    "title": "Users",
+    "user-manage":"User Manage",
+    "manageUI": "Manage User Information",
+    "export": "Export"
+  },
+  "settings": {
+    "title": "settings",
+    "main_settings": {
+      "title": "Main Settings"
+    },
+    "notifications": {
+      "title": "Notifications"
+    }
+    
+  }
+}
