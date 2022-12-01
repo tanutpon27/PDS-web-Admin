@@ -7,8 +7,8 @@ import versions from '_versions';
 export const environment = {
     production: false,
     appUrl: 'https://localhost:4200',
-    apiBaseUrl: 'https://brbparcelanddocumenttracking.azurewebsites.net/api',
-    fileUrl: 'https://brbparcelanddocumenttracking.azurewebsites.net/UploadedFiles',
+    apiBaseUrl: 'https://parcel-management.azurewebsites.net/api/',
+    fileUrl: 'https://parcel-management.azurewebsites.net/UploadedFiles',
     appVersion: versions.version + ' (' + versions.versionDate + ')-DEV',
     getEmpImageUrl: 'https://empmobile.boonrawd.co.th/HCMPRD/',
 };
