@@ -1,5 +1,5 @@
 {
-    "name": "mts",
+    "name": "pds",
     "version": "1.0.0",
     "description": "Material Tracking System",
     "author": "BRB ICT",
@@ -10,7 +10,7 @@
         "prestart": "ts-appversion",
         "prebuild": "ts-appversion",
         "start": "ng serve --open --ssl true",
-        "start-pwa-dev": "http-server -p 8080 -c-1 dist/mts",
+        "start-pwa-dev": "http-server -p 8080 -c-1 dist/pds",
         "build": "ng build",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",

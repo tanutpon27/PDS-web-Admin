@@ -9,7 +9,7 @@
     },
     "newProjectRoot": "projects",
     "projects": {
-        "mts": {
+        "pds": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -23,7 +23,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/mts",
+                        "outputPath": "dist/pds",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -37,8 +37,7 @@
                             "crypto-js/enc-base64"
                         ],
                         "assets": [
-                          "src/favicon-16x16.png",
-                          "src/favicon-32x32.png",
+                          "src/assets/favicon.png",
                           "src/assets",
                           {
                             "glob": "_redirects",
@@ -101,10 +100,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "mts:build:production"
+                            "browserTarget": "pds:build:production"
                         },
                         "development": {
-                            "browserTarget": "mts:build:development"
+                            "browserTarget": "pds:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -112,7 +111,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "mts:build"
+                        "browserTarget": "pds:build"
                     }
                 },
                 "test": {
@@ -124,8 +123,7 @@
                         "karmaConfig": "karma.conf.js",
                         "inlineStyleLanguage": "scss",
                         "assets": [
-                          "src/favicon-16x16.png",
-                          "src/favicon-32x32.png",
+                          "src/favicon.png",
                           "src/assets",
                           "src/manifest.webmanifest"
                         ],
