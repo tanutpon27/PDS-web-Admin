@@ -17,7 +17,13 @@ export const appRoutes: Route[] = [
     // path. Below is another redirection for that path to redirect the user to the desired
     // location. This is a small convenience to keep all main routes together here on this file.
     { path: 'signed-in-redirect', pathMatch: 'full', redirectTo: 'dashboard' },
-
+    {
+        path: 'privacy-policy',
+        loadChildren: () =>
+            import(
+                'app/modules/policy/privacy-policy/privacy-policy.module'
+            ).then((m) => m.PrivacyPolicyModule),
+    },
     // Auth routes for guests
     {
         path: '',
@@ -62,13 +68,6 @@ export const appRoutes: Route[] = [
                     import('app/modules/auth/sign-up/sign-up.module').then(
                         (m) => m.AuthSignUpModule
                     ),
-            },
-            {
-                path: 'privacy-policy',
-                loadChildren: () =>
-                    import(
-                        'app/modules/policy/privacy-policy/privacy-policy.module'
-                    ).then((m) => m.PrivacyPolicyModule),
             },
         ],
     },
