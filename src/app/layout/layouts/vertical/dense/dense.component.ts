@@ -15,7 +15,7 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
 {
     isScreenSmall: boolean;
     navigation: Navigation;
-    navigationAppearance: 'default' | 'dense' = 'dense';
+    navigationAppearance: 'appdefault' | 'dense' = 'dense';
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
@@ -68,7 +68,7 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
                 this.isScreenSmall = !matchingAliases.includes('md');
 
                 // Change the navigation appearance
-                this.navigationAppearance = this.isScreenSmall ? 'default' : 'dense';
+                this.navigationAppearance = this.isScreenSmall ? 'appdefault' : 'dense';
             });
     }
 
@@ -108,6 +108,6 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
      */
     toggleNavigationAppearance(): void
     {
-        this.navigationAppearance = (this.navigationAppearance === 'default' ? 'dense' : 'default');
+        this.navigationAppearance = (this.navigationAppearance === 'appdefault' ? 'dense' : 'appdefault');
     }
 }

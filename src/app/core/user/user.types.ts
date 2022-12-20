@@ -26,7 +26,7 @@ export interface User
     created_by: string;
     updated_at: Date;
     updated_by: string;
-
+    user_role_id?:number;
     avatar?: string;
     //status?: string;
 }

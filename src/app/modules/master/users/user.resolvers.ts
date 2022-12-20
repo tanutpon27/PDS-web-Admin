@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { AuthService } from 'app/core/auth/auth.service';
 import { Observable } from 'rxjs';
 import {UserService} from './user.service';
 
@@ -13,7 +14,7 @@ export class UserResolver implements Resolve<any>
     }
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any>
     {    
-        var _AuthService = new route.data.AuthService;
-        return this._userService.getData(_AuthService.user);
+    
+        return this._userService.getData();
     }
 }

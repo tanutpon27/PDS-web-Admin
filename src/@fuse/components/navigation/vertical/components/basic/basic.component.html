@@ -8,7 +8,7 @@
     <ng-container *ngIf="item.link && !item.externalLink && !item.function && !item.disabled">
         <a
             class="fuse-vertical-navigation-item"
-            [ngClass]="{'fuse-vertical-navigation-item-active-forced': item.active}"
+            [ngClass]="{'fuse-vertical-navigation-item-active-forced': !item.active}"
             [routerLink]="[item.link]"
             [fragment]="item.fragment ?? null"
             [preserveFragment]="item.preserveFragment ?? false"
@@ -36,7 +36,7 @@
     <ng-container *ngIf="!item.link && item.function && !item.disabled">
         <div
             class="fuse-vertical-navigation-item"
-            [ngClass]="{'fuse-vertical-navigation-item-active-forced': item.active}"
+            [ngClass]="{'fuse-vertical-navigation-item-active-forced': !item.active}"
             [matTooltip]="item.tooltip || ''"
             (click)="item.function(item)">
             <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
@@ -47,7 +47,7 @@
     <ng-container *ngIf="item.link && !item.externalLink && item.function && !item.disabled">
         <a
             class="fuse-vertical-navigation-item"
-            [ngClass]="{'fuse-vertical-navigation-item-active-forced': item.active}"
+            [ngClass]="{'fuse-vertical-navigation-item-active-forced': !item.active}"
             [routerLink]="[item.link]"
             [fragment]="item.fragment ?? null"
             [preserveFragment]="item.preserveFragment ?? false"
@@ -77,7 +77,7 @@
     <ng-container *ngIf="!item.link && !item.function && !item.disabled">
         <div
             class="fuse-vertical-navigation-item"
-            [ngClass]="{'fuse-vertical-navigation-item-active-forced': item.active}"
+            [ngClass]="{'fuse-vertical-navigation-item-active-forced': !item.active}"
             [matTooltip]="item.tooltip || ''">
             <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
         </div>

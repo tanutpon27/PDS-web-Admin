@@ -1,22 +1,31 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, ReplaySubject, tap } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, ReplaySubject, Subject, tap } from 'rxjs';
 import { Navigation } from 'app/core/navigation/navigation.types';
+import { environment } from 'environments/environment';
+import { SettingsService } from '../settings/settings.sevice';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
-export class NavigationService
-{
-    private _navigation: ReplaySubject<Navigation> = new ReplaySubject<Navigation>(1);
+export class NavigationService {
+    private apiUrl = `${environment.apiBaseUrl}/Menu`;
+    private _navigation: ReplaySubject<Navigation> =
+        new ReplaySubject<Navigation>(1);
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
      * Constructor
      */
-    constructor(private _httpClient: HttpClient)
-    {
+    constructor(
+        private _httpClient: HttpClient,
+        private _settingsService: SettingsService
+    ) {}
+    ngOnDestroy(): void {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next(null);
+        this._unsubscribeAll.complete();
     }
-
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
@@ -24,8 +33,7 @@ export class NavigationService
     /**
      * Getter for navigation
      */
-    get navigation$(): Observable<Navigation>
-    {
+    get navigation$(): Observable<Navigation> {
         return this._navigation.asObservable();
     }
 
@@ -36,12 +44,16 @@ export class NavigationService
     /**
      * Get all navigation data
      */
-    get(): Observable<Navigation>
-    {
-        return this._httpClient.get<Navigation>('api/common/navigation').pipe(
-            tap((navigation) => {
-                this._navigation.next(navigation);
-            })
-        );
+    get(): Observable<Navigation> {
+        this._settingsService.getRole().subscribe();
+        this._settingsService.getCompanyole().subscribe();
+
+        return this._httpClient
+            .get<Navigation>(`${this.apiUrl}/GetMenuByPermission`)
+            .pipe(
+                tap((navigation) => {
+                    this._navigation.next(navigation);
+                })
+            );
     }
 }

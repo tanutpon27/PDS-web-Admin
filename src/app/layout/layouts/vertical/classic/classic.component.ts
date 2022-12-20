@@ -58,9 +58,10 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((navigation: Navigation) => {
                 this.navigation = navigation;
+             
+                
                 // this.navigation.default[0].title=this._translocoService.translate(this.navigation.default[0].id);
             });
-// console.log(this._translocoService.translate(this.navigation.default[0].id));
 
         // Subscribe to media changes
         this._fuseMediaWatcherService.onMediaChange$

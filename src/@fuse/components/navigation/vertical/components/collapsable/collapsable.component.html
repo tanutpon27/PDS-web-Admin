@@ -58,7 +58,7 @@
     *ngIf="!isCollapsed"
     @expandCollapse>
 
-    <ng-container *ngFor="let item of item.children; trackBy: trackByFn">
+    <ng-container *ngFor="let item of item.childrens; trackBy: trackByFn">
 
         <!-- Skip the hidden items -->
         <ng-container *ngIf="(item.hidden && !item.hidden(item)) || !item.hidden">

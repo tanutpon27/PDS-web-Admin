@@ -11,6 +11,7 @@ import { tasks } from 'app/mock-api/apps/tasks/data';
 })
 export class SearchMockApi
 {
+    
     private readonly _defaultNavigation: FuseNavigationItem[] = defaultNavigation;
     private readonly _contacts: any[] = contacts;
     private readonly _tasks: any[] = tasks;
@@ -37,7 +38,8 @@ export class SearchMockApi
     registerHandlers(): void
     {
         // Get the flat navigation and store it
-        const flatNavigation = this._fuseNavigationService.getFlatNavigation(this._defaultNavigation);
+        const flatNavigation = null;
+
 
         // -----------------------------------------------------------------------------------------------------
         // @ Search results - GET
@@ -61,6 +63,8 @@ export class SearchMockApi
                     .filter(contact => contact.name.toLowerCase().includes(query));
 
                 // Filter the navigation
+                
+                
                 const pagesResults = cloneDeep(flatNavigation)
                     .filter(page => (page.title?.toLowerCase().includes(query) || (page.subtitle && page.subtitle.includes(query))));
 

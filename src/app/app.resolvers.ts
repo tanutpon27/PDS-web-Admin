@@ -23,7 +23,6 @@ export class InitialDataResolver implements Resolve<any>
         //private _notificationsService: NotificationsService,
         // private _quickChatService: QuickChatService,
         // private _shortcutsService: ShortcutsService,
-        private _userService: UserService
     ) {
     }
 

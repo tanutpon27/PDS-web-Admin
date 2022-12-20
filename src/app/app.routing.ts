@@ -147,15 +147,8 @@ export const appRoutes: Route[] = [
             {
                 path: 'master',
                 loadChildren: () =>
-                    import('app/modules/master/master-data.module').then(
+                    import('app/modules/master/master.module').then(
                         (m) => m.MasterDataModule
-                    ),
-            },
-            {
-                path: 'users',
-                loadChildren: () =>
-                    import('app/modules/admin/users/user.module').then(
-                        (m) => m.UserModule
                     ),
             },
             {

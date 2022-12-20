@@ -27,7 +27,7 @@ export class FuseVerticalNavigationComponent implements OnChanges, OnInit, After
     static ngAcceptInputType_transparentOverlay: BooleanInput;
     /* eslint-enable @typescript-eslint/naming-convention */
 
-    @Input() appearance: FuseVerticalNavigationAppearance = 'default';
+    @Input() appearance: FuseVerticalNavigationAppearance = 'appdefault';
     @Input() autoCollapse: boolean = true;
     @Input() inner: boolean = false;
     @Input() mode: FuseVerticalNavigationMode = 'side';
@@ -78,6 +78,8 @@ export class FuseVerticalNavigationComponent implements OnChanges, OnInit, After
         this._handleOverlayClick = (): void => {
             this.close();
         };
+        
+        
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -399,6 +401,7 @@ export class FuseVerticalNavigationComponent implements OnChanges, OnInit, After
         // Mark for check
         this._changeDetectorRef.markForCheck();
 
+
         // Execute the observable
         this.onRefreshed.next(true);
     }
@@ -459,6 +462,9 @@ export class FuseVerticalNavigationComponent implements OnChanges, OnInit, After
      */
     openAside(item: FuseNavigationItem): void
     {
+
+         
+       
         // Return if the item is disabled
         if ( item.disabled || !item.id )
         {

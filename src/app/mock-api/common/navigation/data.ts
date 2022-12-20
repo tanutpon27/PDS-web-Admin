@@ -29,11 +29,12 @@ export const defaultNavigation: FuseNavigationItem[] = [
         type: 'basic',
         icon: 'mat_outline:message',
         link: '/messages'
-    }/*, {
+    }
+    , {
         id: 'settings',
         title: 'Settings',
-       
-        type: 'group',
+        icon: 'mat_outline:settings',
+        type: 'collapsable',
        
         children: [
             {
@@ -51,7 +52,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 link: '/notifications'
             },
         ]
-    }*/
+    }
 ];
 export const compactNavigation: FuseNavigationItem[] = [
     {

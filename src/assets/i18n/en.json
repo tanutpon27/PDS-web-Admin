@@ -33,12 +33,6 @@
   "parcel": {
     "title": "Parcel"
   },
-  "users": {
-    "title": "Users",
-    "user-manage":"User Manage",
-    "manageUI": "Manage User Information",
-    "export": "Export"
-  },
   "settings": {
     "title": "settings",
     "main_settings": {
@@ -47,6 +41,35 @@
     "notifications": {
       "title": "Notifications"
     }
-    
+  },
+  "user": {
+    "title": "User Information",
+    "label": "Admin and client in your company",
+    "add": "Add User",
+    "delete": {
+      "title": "Delete User",
+      "message": "Are you sure you want to delete this user?",
+      "delete": "Delete",
+      "cancel": "Cancel"
+    },
+    "dialog": {
+      "title_add": "Add User",
+      "title_update": "Edit User",
+      "name": "Name",
+      "email": "Email",
+      "company": "Company",
+      "mobile": "Mobile",
+      "username": "Username",
+      "role": "Role",
+      "status":"Status",
+      "cancel_button": "Cancel",
+      "save_button": "Save",
+      "input_required": "Required",
+      "save_success": "Save success"
+    },
+    "active":{
+      "1":"Active",
+      "0":"No Active"
+    }
   }
 }

@@ -7,13 +7,13 @@ export interface TsAppVersion {
     gitCommitHash?: string;
     gitCommitDate?: string;
     gitTag?: string;
-}
+};
 export const versions: TsAppVersion = {
     version: '1.0.0',
     name: 'pds',
-    versionDate: '2022-12-01T06:11:14.454Z',
-    description: 'Parcel Management',
-    gitCommitHash: '86a6de2',
-    versionLong: '1.0.0-86a6de2',
+    versionDate: '2022-12-20T06:56:26.446Z',
+    description: 'Material Tracking System',
+    gitCommitHash: '06d0341',
+    versionLong: '1.0.0-06d0341',
 };
 export default versions;

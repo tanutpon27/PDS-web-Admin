@@ -4,10 +4,12 @@ export interface FuseNavigationItem
 {
     id?: string;
     title?: string;
+    menuId?: string;
     subtitle?: string;
     type:
         | 'aside'
         | 'basic'
+        | 'main-basic'
         | 'collapsable'
         | 'divider'
         | 'group'
@@ -47,7 +49,7 @@ export interface FuseNavigationItem
 }
 
 export type FuseVerticalNavigationAppearance =
-    | 'default'
+    | 'appdefault'
     | 'compact'
     | 'dense'
     | 'thin';

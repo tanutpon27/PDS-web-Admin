@@ -6,8 +6,8 @@ import versions from '_versions';
 
 export const environment = {
     production: false,
-    appUrl: 'https://localhost:4200',
-    apiBaseUrl: 'https://parcel-management.azurewebsites.net/api/',
+    appUrl: 'https://localhost:7189',
+    apiBaseUrl: 'https://localhost:7189/api',
     fileUrl: 'https://parcel-management.azurewebsites.net/UploadedFiles',
     appVersion: versions.version + ' (' + versions.versionDate + ')-DEV',
     getEmpImageUrl: 'https://empmobile.boonrawd.co.th/HCMPRD/',

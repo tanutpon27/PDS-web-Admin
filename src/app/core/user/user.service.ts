@@ -4,7 +4,7 @@ import { map, Observable, ReplaySubject, tap } from 'rxjs';
 import { User } from 'app/core/user/user.types';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class UserService {
     private _user: ReplaySubject<User> = new ReplaySubject<User>(1);
@@ -12,8 +12,7 @@ export class UserService {
     /**
      * Constructor
      */
-    constructor(private _httpClient: HttpClient) {
-    }
+    constructor(private _httpClient: HttpClient) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
@@ -31,8 +30,6 @@ export class UserService {
         // Store the value
         this._user.next(value);
     }
-
-
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -61,4 +58,7 @@ export class UserService {
             })
         );
     }
+
+    
+      
 }

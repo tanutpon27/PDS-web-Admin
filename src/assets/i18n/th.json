@@ -1,53 +1,77 @@
 {
-    
-
-    "dashboard":{
-      "home": "หน้าหลัก",
-        "title": "แผงควบคุม",
-        "clients": "ลูกค้า",
-        "users": "ผู้ใช้",
-        "completed-tasks": "งานที่เสร็จแล้ว",
-        "succeed": "สำเร็จ",
-        "notifications": "การแจ้งเตือน",
-        "times": "ครั้ง",
-        "request": "คำขอ",
-        "reports": "รายงาน",
-        "parcels-by-company": "พัสดุ",
-        "parcel-type": "พัสดุแยกตามสถานะ",
-        "all-parcels": " พัสดุทั้งหมด",
-        "parcels": "พัสดุ",
-        "document": "เอกสาร",
-        "parcelsdocument": "พัสดุและเอกสาร",
-        "late-parcel": "พัสดุล่าช้า",
-        "wait-send": "ลงทะเบียนแล้ว",
-        "confirm-send": "ยืนยันการจัดส่ง",
-        "return-send": "แจ้งส่งคืน",
-        "option-send": "รอผู้รับพัสดุ",
-        "admin-user": "แอดมิน",
-        "client-user": "ผู้ใช้ทั่วไป",
-        "active-user": "จำนวนผู้ที่ใช้งานอยู่",
-        "notactive-user": "จำนวนผู้ที่ไม่ได้ใช้งานแล้ว ",
-        "week-activity": "กิจกรรมประจำสัปดาห์"
+  "dashboard": {
+    "home": "หน้าหลัก",
+    "title": "แผงควบคุม",
+    "clients": "ลูกค้า",
+    "users": "ผู้ใช้",
+    "completed-tasks": "งานที่เสร็จแล้ว",
+    "succeed": "สำเร็จ",
+    "notifications": "การแจ้งเตือน",
+    "times": "ครั้ง",
+    "request": "คำขอ",
+    "reports": "รายงาน",
+    "parcels-by-company": "พัสดุ",
+    "parcel-type": "พัสดุแยกตามสถานะ",
+    "all-parcels": " พัสดุทั้งหมด",
+    "parcels": "พัสดุ",
+    "document": "เอกสาร",
+    "parcelsdocument": "พัสดุและเอกสาร",
+    "late-parcel": "พัสดุล่าช้า",
+    "wait-send": "ลงทะเบียนแล้ว",
+    "confirm-send": "ยืนยันการจัดส่ง",
+    "return-send": "แจ้งส่งคืน",
+    "option-send": "รอผู้รับพัสดุ",
+    "admin-user": "แอดมิน",
+    "client-user": "ผู้ใช้ทั่วไป",
+    "active-user": "จำนวนผู้ที่ใช้งานอยู่",
+    "notactive-user": "จำนวนผู้ที่ไม่ได้ใช้งานแล้ว ",
+    "week-activity": "กิจกรรมประจำสัปดาห์"
+  },
+  "messages": {
+    "title": "ข้อความ"
+  },
+  "parcel": {
+    "title": "พัสดุ"
+  },
+  "settings": {
+    "title": "ตั้งค่า",
+    "main_settings": {
+      "title": "การตั้งค่าหลัก"
     },
-    "messages": {
-      "title": "ข้อความ"
-    },
-    "parcel": {
-      "title": "พัสดุ"
-    },
-    "users": {
-      "title": "ผู้ใช้"
-    },
-    "settings": {
-      "title": "ตั้งค่า",
-      "main_settings": {
-        "title": "การตั้งค่าหลัก"
-      },
-      "notifications": {
-        "title": "การแจ้งเตือน"
-      }
-      
+    "notifications": {
+      "title": "การแจ้งเตือน"
     }
+  },
+  "user": {
+    "title": "ข้อมูลผู้ใช้",
+    "label": "ผู้ดูแลระบบและลูกค้าในบริษัทของคุณ",
+    "add": "เพิ่มผู้ใช้",
    
-    
+    "delete": {
+      "title": "ลบผู้ใช้งาน",
+      "message": "คุณแน่ใจหรือไม่ว่าต้องการลบผู้ใช้รายนี้?",
+      "delete": "ลบ",
+      "cancel": "ยกเลิก"
+    },
+    "dialog": {
+      "title_add": "เพิ่มผู้ใช้",
+      "title_update": "แก้ไขผู้ใช้",
+      "name": "ชื่อ",
+      "email": "อีเมล",
+      "company": "บริษัท",
+      "mobile": "เบอร์",
+      "username": "ชื่อผู้ใช้",
+      "role": "บทบาท",
+      "status":"สถานะ",
+      "cancel_button": "ยกเลิก",
+      "save_button": "บันทึก",
+      "input_required": "กรุณากรอกข้อมูล",
+      "save_success": "บันทึกสำเร็จ"
+    },
+    "active":{
+      "1":"ใช้งาน",
+      "0":"ไม่ใช้งาน"
+    }
+
+  }
 }

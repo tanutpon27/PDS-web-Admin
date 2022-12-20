@@ -37,6 +37,8 @@ export class FuseVerticalNavigationCollapsableItemComponent implements OnInit, O
         private _fuseNavigationService: FuseNavigationService
     )
     {
+       
+        
     }
 
     // -----------------------------------------------------------------------------------------------------
