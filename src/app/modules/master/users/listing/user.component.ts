@@ -11,7 +11,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { TranslocoService } from '@ngneat/transloco';
 import { AuthService } from 'app/core/auth/auth.service';
+import { NavigationService } from 'app/core/navigation/navigation.service';
 import { SettingsService } from 'app/core/settings/settings.sevice';
+import { NgxPermissionsService } from 'ngx-permissions';
 import { filter, Observable, Subject, switchMap, takeUntil } from 'rxjs';
 import { UserDialog } from '../dialog/user-dialog';
 import { UserService } from '../user.service';
@@ -22,12 +24,14 @@ import { Role, UserList } from '../user.types';
     templateUrl: './user.component.html',
 })
 export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
-    isLoading: boolean = false;
+  
     drawerMode: 'over' | 'side' = 'side';
     drawerOpened: boolean = false;
     data: UserList[] = [];
     public roles: Observable<Role[]>;
-    
+    ADD = [];
+    UPDATE = [];
+    DELETE = [];
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
@@ -37,9 +41,33 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
         private _userService: UserService,
         public _authService: AuthService,
         private _fuseConfirmationService: FuseConfirmationService,
-        private _translocoService: TranslocoService, private _dialog: MatDialog,private _settingsService: SettingsService
+        private _translocoService: TranslocoService, private _dialog: MatDialog,private _settingsService: SettingsService,
+        private _navigationServicee: NavigationService,
+        private permissionsService: NgxPermissionsService
     ) {
         this.roles = this._settingsService.role$;
+        const perm = [];
+        this._settingsService.getRole().subscribe(
+            (item)=>{
+                perm.push(item.find((obj) => obj.id === this._authService.user.user_role_id).normalize_name);
+                this.permissionsService.loadPermissions(perm);
+            }
+        );
+        
+        
+        this.roles = this._settingsService.role$;
+        this.ADD = this._navigationServicee.permissionConfig(
+            window.location.pathname,
+            'ADD'
+        );
+        this.UPDATE = this._navigationServicee.permissionConfig(
+            window.location.pathname,
+            'UPDATE'
+        );
+        this.DELETE = this._navigationServicee.permissionConfig(
+            window.location.pathname,
+            'DELETE'
+        );
     }
 
     ngAfterViewInit(): void {}
@@ -64,7 +92,7 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
         this._unsubscribeAll.complete();
     }
 
-    confirmDeleteFirstAidRoom(user: UserList, event) {
+    confirmDelete(user: UserList, event) {
         if (event) {
             event.stopPropagation();
         }
@@ -120,10 +148,9 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
           
         });
         dialogRef.afterClosed().pipe(
-          switchMap(() => this._userService.getData()),
           takeUntil(this._unsubscribeAll),
         ).subscribe(
-            () => this._userService.getData()
+            () => location.reload()
         );
       }
 }

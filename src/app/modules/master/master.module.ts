@@ -27,17 +27,26 @@ import { UserDialog } from './users/dialog/user-dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { UserResolver } from './users/user.resolvers';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { RoleComponent } from './roles/listing/role.component';
+import { RoleResolver } from './roles/role.resolvers';
+import { RoleDialog } from './roles/dialog/role-dialog';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 
 
 
 @NgModule({
     declarations: [
-        UserComponent,UserDialog
+        UserComponent,UserDialog,
+        RoleComponent,RoleDialog
     ],
     imports: [
         RouterModule.forChild(masterDataRoutes),
+        NgxPermissionsModule.forRoot(),
         MatButtonModule,
+        MatIconModule,
+        MatExpansionModule,
         MatIconModule,
         MatTabsModule,
         MatCheckboxModule,
@@ -57,11 +66,12 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
         SharedModule,
         TranslocoModule,
         MatIconModule,
-        MatAutocompleteModule
+        MatAutocompleteModule,
+        
     ],
     providers: [
         UserResolver,
-        
+        RoleResolver
        
       ],
 })

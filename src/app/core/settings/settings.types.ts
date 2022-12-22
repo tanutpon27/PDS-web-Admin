@@ -12,3 +12,4 @@ export interface Companyole {
     picture?: string;
     active?: number;
 }
+

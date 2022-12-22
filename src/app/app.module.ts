@@ -14,6 +14,7 @@ import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
@@ -28,7 +29,7 @@ const routerConfig: ExtraOptions = {
         BrowserModule,
         BrowserAnimationsModule,
         RouterModule.forRoot(appRoutes, routerConfig),
-
+        NgxPermissionsModule.forRoot(),
         // Fuse, FuseConfig & FuseMockAPI
         FuseModule,
         FuseConfigModule.forRoot(appConfig),

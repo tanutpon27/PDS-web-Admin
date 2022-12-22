@@ -19,6 +19,7 @@ export class UserService {
     }
 
     getData(): Observable<any> {
+  
        
         return this._httpClient.get<any>(`${this.apiUrl}/getUsersAll`).pipe(
             tap((response: any) => {

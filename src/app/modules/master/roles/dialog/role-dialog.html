@@ -1,0 +1,140 @@
+<div class="flex flex-col relative overflow-hidden" *transloco="let t">
+
+    <mat-tab-group  class="sm:px-2" mat-stretch-tabs="false" [animationDuration]="'0'">
+        <mat-tab label="General">
+            <ng-template matTabContent>
+                <form [formGroup]="form" novalidate autocomplete="off">
+
+                    <section class="grid grid-cols-12">
+                      
+                        <div  class="col-span-12">
+                            <mat-form-field class="w-full" subscriptSizing="fixed">
+                                <mat-label>ชื่อบทบาท</mat-label>
+                                <input matInput [formControlName]="'normalize_name'">
+                                <mat-error>{{t('user.dialog.input_required')}}</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div *ngIf="!_addMode" class="col-span-12">
+                            <mat-checkbox subscriptSizing="fixed" matInput [formControlName]="'active'" class="w-full"
+                                class="mb-2" [color]="'primary'">
+                                {{t('user.dialog.status')}}
+                            </mat-checkbox>
+                        </div>
+                    </section>
+                </form>
+            </ng-template>
+
+        </mat-tab>
+        <mat-tab label="Permission">
+            <ng-template [ngIf]="" [ngIfElse]="Permissions"></ng-template>
+            
+            <div class="flex items-center justify-end py-5">
+               
+                <button type="button" mat-button (click)="closeDialog()">
+                    {{t('user.dialog.cancel_button')}}
+                </button>
+                <button [disabled]="!form.get('normalize_name').valid" class="px-6 ml-3" mat-flat-button (click)="submit()" [color]="'primary'">
+                    {{t('user.dialog.save_button')}}
+                </button>
+            </div>
+            <div *ngIf="!form.get('normalize_name').valid" class="flex items-center justify-end">
+                <div class="font-medium tracking-tight text-secondary text-warn">กรุณากำหนด บทบาท
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+
+
+
+</div>
+
+
+
+
+
+<!-- Permissions -->
+<ng-template #Permissions>
+
+    <div class="grid grid-cols-12 gap-4">
+        <ng-container *ngFor="let item_page of permissionsRole; trackBy: trackByFn">
+            <mat-accordion class="max-w-4xl col-span-12">
+                <ng-container>
+                    <mat-expansion-panel [expanded]="true" class="bg-default">
+                        <mat-expansion-panel-header [collapsedHeight]="'56px'">
+                            <mat-panel-title class="font-medium leading-tight">
+                                <mat-icon [svgIcon]="item_page.icon"></mat-icon>
+                                <div class="ml-2">{{item_page.title}}</div>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <ng-container *ngIf="item_page.childrens.length == 1">
+                            <div *ngFor="let child of item_page.childrens; trackBy: trackByFn">
+
+                                <ng-container *ngIf="child.config_permissions.length !== 0">
+                                    <div *ngFor="let config of child.config_permissions; trackBy: trackByFn">
+
+                                        <mat-checkbox subscriptSizing="fixed" (change)="onchange($event.checked,item_page.id,null,config.mode)" matInput [ngModel]="
+                                        _data?filterRole(config.role,form.get('name').value):false
+                                            " class="w-full" class="mb-2" [color]="'primary'">
+                                            {{config.mode}}
+                                        </mat-checkbox>
+
+                                    </div>
+                                </ng-container>
+
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="item_page.childrens.length > 1">
+                          
+                            <div class="mt-4" *ngFor="let sub_child of item_page.childrens; trackBy: trackByFn">
+
+                                <mat-accordion class="max-w-4xl col-span-12">
+                                    <ng-container>
+                                        <mat-expansion-panel [expanded]="true" class="bg-default">
+                                            <mat-expansion-panel-header [collapsedHeight]="'56px'">
+                                                <mat-panel-title class="font-medium leading-tight">
+                                                    <mat-icon [svgIcon]="sub_child.icon"></mat-icon>
+                                                    <div class="ml-2">{{sub_child.title}}</div>
+                                                </mat-panel-title>
+                                            </mat-expansion-panel-header>
+                                        
+                                            <ng-container *ngIf="sub_child.config_permissions.length !== 0">
+
+                                                <div
+                                                    *ngFor="let subPage_config of sub_child.config_permissions; trackBy: trackByFn">
+
+                                                    <ng-container >
+                                                        <mat-checkbox subscriptSizing="fixed" (change)="onchange($event.checked,item_page.id,sub_child.id,subPage_config.mode)" matInput [ngModel]="
+                                                        _data?filterRole(subPage_config.role,form.get('name').value):false
+
+                                                            " class="w-full" class="mb-2" [color]="'primary'">
+                                                            {{subPage_config.mode}}
+                                                        </mat-checkbox>
+                                                    </ng-container>
+
+                                                </div>
+                                            </ng-container>
+
+
+
+
+
+                                        </mat-expansion-panel>
+                                    </ng-container>
+                                </mat-accordion>
+
+
+                            </div>
+                        </ng-container>
+
+
+
+
+                    </mat-expansion-panel>
+                </ng-container>
+            </mat-accordion>
+        </ng-container>
+    </div>
+
+</ng-template>
