@@ -55,7 +55,7 @@ export class RoleComponent implements OnInit, AfterViewInit, OnDestroy {
         this._settingsService.getRole().subscribe((item) => {
             perm.push(
                 item.find(
-                    (obj) => obj.id === this._authService.user.user_role_id
+                    (obj) => obj.id === this._authService.user.user_role.id
                 ).normalize_name
             );
             this.permissionsService.loadPermissions(perm);
@@ -114,10 +114,10 @@ export class RoleComponent implements OnInit, AfterViewInit, OnDestroy {
             .pipe(
                 filter((r) => r == 'confirmed'),
                 switchMap(() =>
-                this._roleService.delete({
-                    id: role.id,
-                    permissions: this.permissionsRole,
-                })
+                    this._roleService.delete({
+                        id: role.id,
+                        permissions: this.permissionsRole,
+                    })
                 ),
                 switchMap(() => this._settingsService.getRole()),
                 takeUntil(this._unsubscribeAll)
@@ -156,7 +156,7 @@ export class RoleComponent implements OnInit, AfterViewInit, OnDestroy {
                 });
             } else if (page.childrens.length > 1) {
                 page.childrens.forEach((child) => {
-                    child.role= this.removeRole(
+                    child.role = this.removeRole(
                         child.role,
                         role.normalize_name
                     );
@@ -166,12 +166,10 @@ export class RoleComponent implements OnInit, AfterViewInit, OnDestroy {
                             role.normalize_name
                         );
                     });
-                })
-
+                });
             }
         });
         console.log(this.permissionsRole);
-        
     }
 
     removeRole(role: string, name: string): string {

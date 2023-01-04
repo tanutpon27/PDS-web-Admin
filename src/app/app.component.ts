@@ -11,17 +11,21 @@ export class AppComponent {
     /**
      * Constructor
      */
-    constructor(private permissionsService: NgxPermissionsService,  private _authService: AuthService,private _settingsService:SettingsService) {
+    constructor(
+        private permissionsService: NgxPermissionsService,
+        private _authService: AuthService,
+        private _settingsService: SettingsService
+    ) {
         const perm = [];
-        this._settingsService.getRole().subscribe(
-            (item)=>{
-                perm.push(item.find((obj) => obj.id === this._authService.user.user_role_id).normalize_name);
-                this.permissionsService.loadPermissions(perm);
-            }
-        );
+        this._settingsService.getRole().subscribe((item) => {
+            perm.push(
+                item.find(
+                    (obj) => obj.id === this._authService.user.user_role.id
+                ).normalize_name
+            );
+            this.permissionsService.loadPermissions(perm);
+        });
     }
 
-    ngOnInit(): void {
-        
-    }
+    ngOnInit(): void {}
 }

@@ -24,7 +24,6 @@ import { Role, UserList } from '../user.types';
     templateUrl: './user.component.html',
 })
 export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
-  
     drawerMode: 'over' | 'side' = 'side';
     drawerOpened: boolean = false;
     data: UserList[] = [];
@@ -41,20 +40,23 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
         private _userService: UserService,
         public _authService: AuthService,
         private _fuseConfirmationService: FuseConfirmationService,
-        private _translocoService: TranslocoService, private _dialog: MatDialog,private _settingsService: SettingsService,
+        private _translocoService: TranslocoService,
+        private _dialog: MatDialog,
+        private _settingsService: SettingsService,
         private _navigationServicee: NavigationService,
         private permissionsService: NgxPermissionsService
     ) {
         this.roles = this._settingsService.role$;
         const perm = [];
-        this._settingsService.getRole().subscribe(
-            (item)=>{
-                perm.push(item.find((obj) => obj.id === this._authService.user.user_role_id).normalize_name);
-                this.permissionsService.loadPermissions(perm);
-            }
-        );
-        
-        
+        this._settingsService.getRole().subscribe((item) => {
+            perm.push(
+                item.find(
+                    (obj) => obj.id === this._authService.user.user_role.id
+                ).normalize_name
+            );
+            this.permissionsService.loadPermissions(perm);
+        });
+
         this.roles = this._settingsService.role$;
         this.ADD = this._navigationServicee.permissionConfig(
             window.location.pathname,
@@ -84,7 +86,6 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((data) => {
                 this.data = data;
-               
             });
     }
     ngOnDestroy(): void {
@@ -120,9 +121,7 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
             .afterClosed()
             .pipe(
                 filter((r) => r == 'confirmed'),
-                switchMap(() =>
-                  this._userService.delete(user.id)
-                ),
+                switchMap(() => this._userService.delete(user.id)),
                 switchMap(() => this._userService.getData()),
                 takeUntil(this._unsubscribeAll)
             )
@@ -138,19 +137,15 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
         return item.id || index;
     }
     openEditModal(user: UserList, event) {
- 
-    
         const dialogRef = this._dialog.open(UserDialog, {
-          minHeight: '400px',
-          minWidth: '600px',
-          maxHeight: '90vh',
-          data: user,
-          
+            minHeight: '400px',
+            minWidth: '600px',
+            maxHeight: '90vh',
+            data: user,
         });
-        dialogRef.afterClosed().pipe(
-          takeUntil(this._unsubscribeAll),
-        ).subscribe(
-            () => location.reload()
-        );
-      }
+        dialogRef
+            .afterClosed()
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => location.reload());
+    }
 }
